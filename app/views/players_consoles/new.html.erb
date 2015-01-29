@@ -1,0 +1,13 @@
+<h2>Choose what systems you own</h2>
+
+
+
+<%= form_tag('/players_consoles') %>
+Xbox One <%= check_box_tag  'Xbox_One' %>
+Playstation 4 <%= check_box_tag  'Playstation_4' %><br><br>
+
+Xbox Live Gamertag <%= text_field_tag 'XBL' %><br>
+PSN tag <%= text_field_tag 'PSN' %>
+
+<%= submit_tag 'submit' %>
+
