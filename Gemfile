@@ -31,6 +31,8 @@ gem 'rspec-rails', '~> 3.1.0'
 
 gem 'pry', '~> 0.10.1'
 
+gem 'whenever', :require => false
+
 #Bootstrap
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS

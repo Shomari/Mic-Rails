@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :players_consoles, only: [:new, :create]
 
+  resources :sessions, only: [:create, :index]
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

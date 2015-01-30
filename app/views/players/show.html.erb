@@ -1,3 +1,10 @@
-<%= form_tag('/session') %>
+<%= form_tag('/sessions') %>
 
-	<%= select_tag 'game', options_from_collection_for_select(@game, "id", "name") %>
+Xbox One<%= radio_button_tag 'console', 'Xbox One' %><br>
+Playstation 4<%= radio_button_tag 'console', 'Playstation 4' %><br><br>
+
+
+	<%= select_tag 'game', options_from_collection_for_select(@PS4, "id", "name") %>
+	<%= select_tag 'game', options_from_collection_for_select(@XB1, "id", "name") %>
+
+<%= submit_tag 'submit' %>
