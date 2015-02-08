@@ -1,3 +1,27 @@
-login and create account
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<h1>Welcome to Mic Bitch</h1>
+			<p> 	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-<%= link_to 'Create account', new_player_path %>
+			<%= link_to 'Create account', new_player_path, :class => "btn btn-lg btn-primary"  %>
+			<button class="btn btn-lg btn-primary" id="login-btn">Login</button>
+		
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4 text-center" id="login">
+			<%= form_for @player, :url => url_for(:controller => 'players', :action => 'verify'), html: { class: "form-signin"} do |f| %>
+				<h2 class="form-signin-heading">Please sign in</h2>
+				<%= f.label :email, :class => "sr-only" %>
+				<%= f.text_field :email, :class => "form-control", :placeholder => "Email" %>
+
+				<%= f.label :password, :class => "sr-only" %>
+				<%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
+
+				<%= f.submit "Submit", :class => "btn btn-lg btn-primary btn-block" %>
+			<% end  %>
+		</div>
+	</div>
+</div>

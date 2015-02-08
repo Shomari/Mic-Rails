@@ -1,31 +1,36 @@
 class PlayersController < ApplicationController
+	include PlayersHelper
 
 	def index
+		@player = Player.new
 	end
 
 	def new
 		@player = Player.new
 	end
 
+	def login
+		
+	end
+
+	def verify		
+		player = Player.where(email: params[:player][:email], password: params[:player][:password]).first
+		# binding.pry
+		session[:player] = player.id
+		redirect_to player_path(player)		
+	end
+
 	def create		
 		player = Player.create(player_params)
-		session[:player] = player
+		session[:player] = player.id
 		redirect_to new_players_console_path
 	end
 
 	def show
-		@player = session[:player]
-		@PS4 = Game.where(console: "PS4")
-		@XB1 = Game.where(console: "XB1")
-		@game = Game.all
+		@player = Player.find(session[:player])
+		@PS4 = ps_games
+		@XB1 = xbox_games
 	end
-
-
-	#select system, select game and time.
-	#this creates a session with these datas
-	#then get all active sessions
-	#show the gamertags for people that have active sessions for the same consle system
-
 
 	private
 

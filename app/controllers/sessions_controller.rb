@@ -1,23 +1,31 @@
 class SessionsController < ApplicationController
 
 	def index
-		Session.where
+		
 	end
 
 	def create
-		player = session[:player]
-		console = params[:console]
-		pc = PlayersConsole.where(player_id: player, console_id: console)
-		game = Game.find(params[:game])
-		Session.create(game_id: game, players_console_id: pc)
+		player = Player.find(session[:player])
+		console = Console.where(name: params[:console])
+		pc = PlayersConsole.where(player: player, console: console).first		
+		if params[:psgames] == ""
+			holder = params[:xbgames]
+		else
+			holder = params[:psgames]
+		end
+		game = ConsolesGame.find(holder)
+		Session.create(consoles_game: game, players_console: pc)
 
-		sessions = Session.where(game_id: game, status: "active")
+		@sessions = Session.where('(consoles_game_id = ? AND created_at > ?)', game, Time.now - 1.hour)
+		
+
+		render :index
 	end
 
 	private
 
 	def session_parms
-		params.require(:session).permit(:console, :game)
+		params.require(:session).permit(:console, :consoles_game)
 	end
 
 end

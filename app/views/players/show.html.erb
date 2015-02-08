@@ -1,10 +1,10 @@
-<%= form_tag('/sessions') %>
+<%= form_tag('/sessions', :id => 'session_form') %>
 
-Xbox One<%= radio_button_tag 'console', 'Xbox One' %><br>
-Playstation 4<%= radio_button_tag 'console', 'Playstation 4' %><br><br>
+Xbox One<%= radio_button_tag 'console', 'XB1' %><br>
+Playstation 4<%= radio_button_tag 'console', 'PS4' %><br><br>
 
 
-	<%= select_tag 'game', options_from_collection_for_select(@PS4, "id", "name") %>
-	<%= select_tag 'game', options_from_collection_for_select(@XB1, "id", "name") %>
+	<%= select_tag 'psgames', options_from_collection_for_select(@PS4, "id", 'name'), :include_blank => true %>
+	<%= select_tag 'xbgames', options_from_collection_for_select(@XB1, "id", 'name'), :include_blank => true %>
 
 <%= submit_tag 'submit' %>

@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   root 'players#index'
 
+  get 'login' => 'players#login'
+  post 'login' => 'players#verify'
+
   resources :players
 
   resources :players_consoles, only: [:new, :create]
