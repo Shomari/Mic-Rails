@@ -7,22 +7,45 @@ class PlayersConsolesController < ApplicationController
 	#worst method ever?
 	def create		
 		player = session[:player]
-		consoles = Console.all
-		#["Xbox_one", "Playstation_4"]
+		consoles = ["Xbox_One", "Playstation_4"]
 		
-		params.each do |param|
-			if consoles.include? param
-				if param == "Xbox_One"
-					PlayersConsole.create(player_id: player, system_id: param, gtag: params[:XBL] )
+		
+		params.each do |key, value|
+			if consoles.include? key
+				if key == "Xbox_One"
+					PlayersConsole.create!(player_id: player, console_id: XBOX, gtag: params[:XBL] )
 				else
-					PlayersConsole.create(player_id: player, system_id: param, gtag: params[:PSN] )
+					PlayersConsole.create!(player_id: player, console_id: PLAYSTATION, gtag: params[:PSN] )
+				end
+			end
+		end 
+		redirect_to player_path(player)
+	end
+
+	def edit
+	end
+
+	def update
+		player = session[:player]
+		pc = PlayersConsole.where(player_id: player)
+		consoles = ["Xbox_One", "Playstation_4"]		
+		
+		params.each do |key, value|
+			if consoles.include? key
+				if key == "Xbox_One"
+					xb = PlayersConsole.find_or_initialize_by(player_id: player, console_id: XBOX )
+					xb.gtag = params[:XBL]
+					xb.save!
+				else
+					ps = PlayersConsole.find_or_initialize_by(player_id: player, console_id: PLAYSTATION )
+					ps.gtag = params[:PSN]
+					ps.save!
 				end
 			end
 		end 
 
+
 		redirect_to player_path(player)
-
-
 	end
 
 	private

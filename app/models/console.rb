@@ -4,4 +4,6 @@ class Console < ActiveRecord::Base
 
 	has_many :consoles_games
 	has_many :games, through: :consoles_games
+
+	validates :name, presence: true
 end

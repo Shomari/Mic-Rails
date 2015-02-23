@@ -1,0 +1,12 @@
+<div class="col-md-6 col-md-offset-3 text-center">
+
+	<h2>Choose what systems you own</h2>
+
+	Xbox One <%= check_box_tag 'Xbox_One' %>
+	Playstation 4 <%= check_box_tag  'Playstation_4' %><br><br>
+
+	<%= text_field_tag 'XBL', nil, :class => "form-control", :placeholder => "Xbox Live Gamertag" %>
+	<%= text_field_tag 'PSN', nil, :class => "form-control", :placeholder => "PSN tag"  %>
+
+	<%= submit_tag 'submit', :class => "btn btn-lg btn-primary btn-block" %>
+</div>

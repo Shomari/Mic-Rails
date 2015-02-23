@@ -1,3 +1,11 @@
-<% @sessions.each do |session| %>
-	<%= session.players_console.gtag %>
-<% end %>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+				<table class="table table-striped table-bordered text-center">
+					<% @sessions.each do |session| %>
+						<tr><td><i class="fa fa-gamepad"></i><%= session.players_console.gtag %></td></tr>
+					<% end %>
+			</div>
+		</div>
+	</div>
+</div>

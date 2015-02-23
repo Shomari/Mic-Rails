@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :players
 
-  resources :players_consoles, only: [:new, :create]
+  resources :players_consoles
 
   resources :sessions, only: [:create, :index]
 

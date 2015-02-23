@@ -15,19 +15,25 @@ class PlayersController < ApplicationController
 
 	def verify		
 		player = Player.where(email: params[:player][:email], password: params[:player][:password]).first
-		# binding.pry
 		session[:player] = player.id
 		redirect_to player_path(player)		
 	end
 
 	def create		
-		player = Player.create(player_params)
-		session[:player] = player.id
-		redirect_to new_players_console_path
+		player = Player.new(player_params)
+		if player.save
+			session[:player] = player.id
+			redirect_to new_players_console_path
+		else
+			#player.save
+			flash[:notice] = player.errors
+			redirect_to(:back)
+		end
 	end
 
 	def show
 		@player = Player.find(session[:player])
+		@consoles = PlayersConsole.where(player: @player)
 		@PS4 = ps_games
 		@XB1 = xbox_games
 	end
