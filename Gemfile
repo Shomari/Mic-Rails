@@ -33,6 +33,7 @@ gem 'rspec-rails', '~> 3.1.0'
 gem 'pry', '~> 0.10.1'
 
 gem 'whenever', :require => false
+gem 'devise'
 
 #Bootstrap
 gem "therubyracer"

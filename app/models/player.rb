@@ -1,7 +1,7 @@
 class Player < ActiveRecord::Base
-	has_many :players_consoles
-	has_many :consoles, through: :players_consoles
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
-	validates :email, :email => true, uniqueness: true
-	validates :password, length: { minimum: 8 }
 end

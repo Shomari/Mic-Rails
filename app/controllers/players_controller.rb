@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
 	include PlayersHelper
+	before_action :authenticate_player!, except: [:index]
 
 	def index
 		@player = Player.new

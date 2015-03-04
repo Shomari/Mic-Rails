@@ -1,13 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :players, controllers: { sessions: "players/sessions" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   root 'players#index'
-
-  get 'login' => 'players#login'
-  post 'login' => 'players#verify'
-
-  resources :players
 
   resources :players_consoles
 
