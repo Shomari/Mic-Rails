@@ -4,12 +4,28 @@ class SessionsController < ApplicationController
 		
 	end
 
+	def check_question
+		@question = Question.last
+		check = AnswerBook.where({player: current_player, question: @question}).first
+		if check == nil		
+			redirect_to question_path(@question)
+		else
+			redirect_to sessions_path(request.parameters)
+		end
+
+		#check = players_answer where player_id = player
+		#if check.question_id = this_weeks_question method => create
+		#else
+		#render question ask page
+	end
+
 	def create
-		player = Player.find(session[:player])
+		player = current_player
+		binding.pry
 		console = Console.where(name: params[:console])
 		pc = PlayersConsole.where(player: player, console: console).first
 		
-		redirect_to player_path(player), notice: "You don't have a tag associated with this console." and return if pc == nil
+		redirect_to player_show_path(player), notice: "You don't have a tag associated with this console." and return if pc == nil
 	
 		
 		if params[:psgames] == ""

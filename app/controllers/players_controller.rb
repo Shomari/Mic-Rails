@@ -36,7 +36,7 @@ class PlayersController < ApplicationController
 	end
 
 	def show
-		@player = Player.find(session[:player])
+		@player = current_player
 		@consoles = PlayersConsole.where(player: @player)
 		@PS4 = ps_games
 		@XB1 = xbox_games

@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304014238) do
+ActiveRecord::Schema.define(version: 20150307201548) do
+
+  create_table "answer_books", force: true do |t|
+    t.integer  "player_id"
+    t.integer  "question_id"
+    t.integer  "answer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "answers", force: true do |t|
+    t.string   "answer"
+    t.integer  "question_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "consoles", force: true do |t|
     t.string   "name"
@@ -34,6 +49,7 @@ ActiveRecord::Schema.define(version: 20150304014238) do
   end
 
   create_table "players", force: true do |t|
+    t.integer  "points"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -55,6 +71,12 @@ ActiveRecord::Schema.define(version: 20150304014238) do
     t.string   "gtag"
     t.integer  "player_id"
     t.integer  "console_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "questions", force: true do |t|
+    t.string   "inquiry"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

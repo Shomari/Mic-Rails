@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :players, controllers: { sessions: "players/sessions" }
+  devise_for :players,  controllers: { sessions: "players/sessions", registrations: "players/registrations" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   resources :players_consoles
 
   resources :sessions, only: [:create, :index]
+  resources :questions, only: [:show]
+  resources :answer_books, only: [:create]
+
+  get 'players/:id' => 'players#show', as: 'player_show'
+  post 'question' => 'sessions#check_question', as: 'check_question' 
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

@@ -6,20 +6,19 @@ class PlayersConsolesController < ApplicationController
 
 	#worst method ever?
 	def create		
-		player = session[:player]
+		player = current_player
 		consoles = ["Xbox_One", "Playstation_4"]
-		
 		
 		params.each do |key, value|
 			if consoles.include? key
 				if key == "Xbox_One"
-					PlayersConsole.create!(player_id: player, console_id: XBOX, gtag: params[:XBL] )
+					PlayersConsole.create!(player: player, console_id: XBOX, gtag: params[:XBL] )
 				else
-					PlayersConsole.create!(player_id: player, console_id: PLAYSTATION, gtag: params[:PSN] )
+					PlayersConsole.create!(player: player, console_id: PLAYSTATION, gtag: params[:PSN] )
 				end
 			end
 		end 
-		redirect_to player_path(player)
+		redirect_to player_show_path(player)
 	end
 
 	def edit

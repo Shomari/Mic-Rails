@@ -1,22 +1,53 @@
-<div class="row">
-	<% @consoles.each do |console| %>
-		<%= console.gtag %><br>
-	<% end %>
-	<%= link_to "Edit profile", edit_players_console_path %>
-</div>
-
-	<div class="row">
-		<div class="col-md-4 col-md-offset-4">
-
-	<%= form_tag('/sessions', :id => 'session_form') %>
-
-	Xbox One<%= radio_button_tag 'console', 'XB1' %><br>
-	Playstation 4<%= radio_button_tag 'console', 'PS4' %><br><br>
-
-
-		<%= select_tag 'psgames', options_from_collection_for_select(@PS4, "id", 'name'), :include_blank => true, :class => "form-control" %>
-		<%= select_tag 'xbgames', options_from_collection_for_select(@XB1, "id", 'name'), :include_blank => true, :class => "form-control" %>
-
-	<%= submit_tag 'submit', :class => "btn btn-lg btn-primary btn-block" %>
+<nav class="navbar navbar-default navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">Mic</a>
 		</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Fourm</a></li>
+					<li><%= link_to 'Logout', destroy_player_session_path, :method => "delete"  %></li>
+					<li><%= link_to "Edit profile", edit_players_console_path %></li>
+				</ul>
+			</div>
 	</div>
+</nav>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 text-center" id="profile_box">
+			<div class="row">
+			<% @consoles.each do |console| %>
+				<div class="col-md-6 text-center">
+				<%= console.gtag %>
+				</div>
+			<% end %>
+			<div class="row">
+				The cool tagline goes here!
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<span id="points">Points:</span>
+				</div>
+				<div class="col-md-8">
+					<span id="number">23493</span>
+				</div>
+			</div>
+			</div>
+		</div>
+		
+
+			<div class="col-md-4">
+
+		<%= form_tag(check_question_path, :id => 'session_form') %>
+
+		Xbox One<%= radio_button_tag 'console', 'XB1' %><br>
+		Playstation 4<%= radio_button_tag 'console', 'PS4' %><br><br>
+
+
+			<%= select_tag 'psgames', options_from_collection_for_select(@PS4, "id", 'name'), :include_blank => true, :class => "form-control" %>
+			<%= select_tag 'xbgames', options_from_collection_for_select(@XB1, "id", 'name'), :include_blank => true, :class => "form-control" %>
+
+		<%= submit_tag 'submit', :class => "btn btn-lg btn-primary btn-block" %>
+			</div>
+		</div>

@@ -7,18 +7,21 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Fourm</a></li>
 					<li><%= link_to 'Logout', destroy_player_session_path, :method => "delete"  %></li>
+					<li><%= link_to "Edit profile", edit_players_console_path %></li>
 				</ul>
 			</div>
 	</div>
 </nav>
 <div class="container">
 	<div class="row">
-		<div class="col-md-4 col-md-offset-4">
-				<table class="table table-striped table-bordered text-center">
-					<% @sessions.each do |session| %>
-						<tr><td><i class="fa fa-gamepad"></i><%= session.players_console.gtag %></td></tr>
-					<% end %>
-			</div>
+		<div class="col-md-4 col-md-offset-4 text-center">
+			<h2><%= @question.inquiry %></h2>
+			<%= form_for(@answer_bk) do |f| %>
+			<%= f.radio_button :answer, @answers %>
+			<% end %>
+			<% @answers.each do |ans| %>
+				<%= ans.answer %><br>
+			<% end %>
 		</div>
 	</div>
 </div>
