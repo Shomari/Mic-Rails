@@ -13,12 +13,19 @@
 </nav>
 <div class="container">
 	<div class="row">
-		<div class="col-md-4 col-md-offset-4">
-				<table class="table table-striped table-bordered text-center">
-					<% @sessions.each do |session| %>
-						<tr><td><i class="fa fa-gamepad"></i><%= session.players_console.gtag %></td></tr>
-					<% end %>
-			</div>
-		</div>
+	<% @sessions.each_with_index do |session, index| %>
+		<% if index < 3 %>a
+				<div class="col-md-4">
+				<%= render partial: "online", locals: {session: session} %>
+				</div>
+		<% else %>
+
+			<div class="row">
+				<div class="col-md-4">
+					<%= render partial: "online", locals: {session: session} %>
+				</div>
+		<% end %>
+	<% end %>
+
 	</div>
 </div>

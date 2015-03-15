@@ -16,12 +16,15 @@
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4 text-center">
 			<h2><%= @question.inquiry %></h2>
-			<%= form_for(@answer_bk) do |f| %>
-			<%= f.radio_button :answer, @answers %>
+			<%= simple_form_for @answer_bk do |f| %>
+			<%= f.error_notification %>
+
+			<%= f.hidden_field :question_id, value: @question.id %>
+			<%= f.association :answer, as: :radio_buttons, label_method: :answer %>
+
+			<%= f.button :submit, "Submit" %>
 			<% end %>
-			<% @answers.each do |ans| %>
-				<%= ans.answer %><br>
-			<% end %>
+
 		</div>
 	</div>
 </div>

@@ -19,6 +19,8 @@ PlayersConsole.create!(player: player1, console: xbox, gtag: "xbGtag")
 PlayersConsole.create!(player: player1, console: playstation, gtag: "PStag")
 PlayersConsole.create!(player: player2, console: xbox, gtag: "2xboxtag")
 PlayersConsole.create!(player: player2, console: playstation, gtag: "2PStag")
+PlayersConsole.create!(player: player3, console: xbox, gtag: "3xboxtag")
+PlayersConsole.create!(player: player3, console: playstation, gtag: "3PStag")
 
 halo = Game.create!(name: "halo")
 gta5 = Game.create!(name: "GTAV")
@@ -29,3 +31,8 @@ ConsolesGame.create!(console: xbox, game: gta5)
 ConsolesGame.create!(console: playstation, game: gta5)
 ConsolesGame.create!(console: xbox, game: destiny)
 ConsolesGame.create!(console: playstation, game: destiny)
+
+q = Question.create!(inquiry: "Who's a nigga???")
+
+Answer.create!(answer: "you", question: q)
+Answer.create!(answer: "me", question: q)

@@ -1,16 +1,39 @@
 class SessionsController < ApplicationController
 
 	def index
+		@player = current_player
+		console = Console.where(name: session[:console])
+		pc = PlayersConsole.where(player: @player, console: console).first
 		
+		redirect_to player_show_path(@player), notice: "You don't have a tag associated with this console." and return if pc == nil
+	
+		
+		if session[:psgames] == ""
+			holder = session[:xbgames]
+		else
+			holder = session[:psgames]
+		end
+		game = ConsolesGame.find(holder)
+		check = Session.where('(players_console_id = ? AND created_at > ?)', pc.id, Time.now - 1.hour)
+		if check.length < 1
+			Session.create(consoles_game: game, players_console: pc)
+		end
+		@recently_added = RecentlyAdded.new		
+		@sessions = Session.where('(consoles_game_id = ? AND created_at > ?)', game, Time.now - 1.hour)
+		render :index
+	
 	end
 
 	def check_question
 		@question = Question.last
 		check = AnswerBook.where({player: current_player, question: @question}).first
-		if check == nil		
-			redirect_to question_path(@question)
+		session[:console] = params[:console]
+		session[:psgames] = params[:psgames]
+		session[:xbgames] = params[:xbgames]
+		if check == nil			
+			return redirect_to question_path(@question)
 		else
-			redirect_to sessions_path(request.parameters)
+			return redirect_to(controller: 'sessions', action: 'create')			
 		end
 
 		#check = players_answer where player_id = player
@@ -19,24 +42,24 @@ class SessionsController < ApplicationController
 		#render question ask page
 	end
 
+	#I need to post to here from ab_controller#create but can't so had to duplicate code
 	def create
 		player = current_player
-		binding.pry
-		console = Console.where(name: params[:console])
+		console = Console.where(name: session[:console])
 		pc = PlayersConsole.where(player: player, console: console).first
 		
 		redirect_to player_show_path(player), notice: "You don't have a tag associated with this console." and return if pc == nil
 	
 		
 		if params[:psgames] == ""
-			holder = params[:xbgames]
+			holder = session[:xbgames]
 		else
-			holder = params[:psgames]
+			holder = session[:psgames]
 		end
 		game = ConsolesGame.find(holder)
-		Session.create(consoles_game: game, players_console: pc)
-		@sessions = Session.where('(consoles_game_id = ? AND created_at > ?)', game, Time.now - 1.hour)
-		
+		Session.find_or_create_by(consoles_game: game, players_console: pc)
+		@sessions = Session.includes(:players_console, :players).where('(consoles_game_id = ? AND created_at > ?)', game, Time.now - 1.hour).order('RAND()').first(6)
+		binding.pry
 		render :index
 	end
 

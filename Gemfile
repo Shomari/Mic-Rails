@@ -34,6 +34,7 @@ gem 'pry', '~> 0.10.1'
 
 gem 'whenever', :require => false
 gem 'devise'
+gem 'simple_form'
 
 #Bootstrap
 gem "therubyracer"
