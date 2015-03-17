@@ -3,7 +3,7 @@ class CreateGuesses < ActiveRecord::Migration
     create_table :guesses do |t|
     	t.integer :guesser
     	t.integer :player_id
-    	
+    	t.integer :question_id
 
       t.timestamps
     end

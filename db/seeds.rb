@@ -34,5 +34,11 @@ ConsolesGame.create!(console: playstation, game: destiny)
 
 q = Question.create!(inquiry: "Who's a nigga???")
 
-Answer.create!(answer: "you", question: q)
-Answer.create!(answer: "me", question: q)
+answer1 = Answer.create!(answer: "you", question: q)
+answer2 = Answer.create!(answer: "me", question: q)
+
+AnswerBook.create(player: player1, question: q, answer: answer1)
+AnswerBook.create(player: player2, question: q, answer: answer2)
+
+RecentlyAdded.create(player_id: player3.id, referrer_id: player1.id)
+RecentlyAdded.create(player_id: player3.id, referrer_id: player2.id)

@@ -9,16 +9,12 @@
 			</tr>			
 			<%= @recents.each do |recent| %>
 			<tr>
-				<th><%= recent.referrer %></th>
-				<th>need to add game functionality</th>
-				<th><%= recent.created_at %></th>
-				<th><%= simple_form_for @answer_book do |f| %>
-				<%= f.input :hidden %> m,
-
-				 </th>
+				<td><%= recent.referrer %></td>
+				<td>need to add game functionality</td>
+				<td><%= recent.created_at %></td>
+				<td><%= link_to 'Answer Question', guesses_path(guesser: "#{recent.player.id}", player: "#{recent.referrer.id}") %></td>				
 			</tr>
 			<% end %>
-
 		</table>
 	</div>
 </div>

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   root 'players#index'
 
+  resources :guesses, only: [:create, :index] 
   resources :players_consoles
 
   resources :sessions, only: [:create, :index]

@@ -1,0 +1,30 @@
+<nav class="navbar navbar-default navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">Mic</a>
+		</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Fourm</a></li>
+					<li><%= link_to 'Logout', destroy_player_session_path, :method => "delete"  %></li>
+					<li><%= link_to "Edit profile", edit_players_console_path %></li>
+				</ul>
+			</div>
+	</div>
+</nav>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4 text-center">
+			<h2><%= @question.inquiry %></h2>
+			<%= simple_form_for @answer_bk do |f| %>
+			<%= f.error_notification %>
+
+			<%= f.hidden_field :question_id, value: @question.id %>
+			<%= f.association :answer, as: :radio_buttons, label_method: :answer %>
+
+			<%= f.button :submit, "Submit" %>
+			<% end %>
+
+		</div>
+	</div>
+</div>
