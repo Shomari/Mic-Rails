@@ -9,10 +9,10 @@
 			</tr>			
 			<%= @recents.each do |recent| %>
 			<tr>
-				<td><%= recent.referrer %></td>
+				<td><%= recent.friend.id %></td>
 				<td>need to add game functionality</td>
 				<td><%= recent.created_at %></td>
-				<td><%= link_to 'Answer Question', guesses_path(guesser: "#{recent.player.id}", player: "#{recent.referrer.id}") %></td>				
+				<td><%= link_to 'Answer Question', guesses_path(guesser: "#{recent.player.id}", friend: "#{recent.friend.id}"), method: :get %></td>				
 			</tr>
 			<% end %>
 		</table>

@@ -12,4 +12,9 @@ class Player < ActiveRecord::Base
 
   has_many :recently_addeds
 
+  def correct_guess
+  	self.points = self.points + 10
+  	self.save!
+  end
+
 end

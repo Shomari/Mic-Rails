@@ -1,10 +1,8 @@
 class RecentlyAddedsController < ApplicationController
 
-	def index
-		
+	def index		
 		@recents = RecentlyAdded.where("player_id = ? AND created_at > ?",
 				 current_player.id, 1.week.ago )
-		@guess = Guess.new
 	end
 
 	def create

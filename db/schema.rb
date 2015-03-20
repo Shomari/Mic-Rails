@@ -49,9 +49,10 @@ ActiveRecord::Schema.define(version: 20150316000753) do
   end
 
   create_table "guesses", force: true do |t|
-    t.integer  "guesser"
+    t.integer  "friend_id"
     t.integer  "player_id"
     t.integer  "question_id"
+    t.integer  "answer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -92,7 +93,7 @@ ActiveRecord::Schema.define(version: 20150316000753) do
 
   create_table "recently_addeds", force: true do |t|
     t.integer  "player_id"
-    t.integer  "referrer_id"
+    t.integer  "friend_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
