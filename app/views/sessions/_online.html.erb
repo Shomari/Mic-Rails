@@ -1,12 +1,18 @@
 <div class="row">
- <h2><%= session.players_console.gtag %> </h2>
-</div>
-<div class="row">
- <h2><%= session.player.tagline %> </h2>
+	<table>
+		<tr>
+			<td>Tag:</td>
+			<td> <%= session.players_console.gtag %></td>
+ 		</tr>
+		<tr>
+			<td>Tagline:</td>
+			<td> <%= session.player.tagline %></td>
+ 		</tr>
+ 	</table> 
 </div>
 <div class="row">
 	<%= simple_form_for [@player, @recently_added], method: :post do |f| %>
 		<%= f.input :referrer, :as => :hidden, :input_html => {:value => session.player.id} %>
-		<%= f.button :submit %>
+		<%= f.button :submit, "Add to Recents", class: "btn btn-lg btn-primary btn-block", id: "session_button" %>
 	<% end %>
 </div>

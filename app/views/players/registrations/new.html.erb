@@ -1,16 +1,4 @@
-<nav class="navbar navbar-default navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">Mic</a>
-    </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Fourm</a></li>
-          <li><a href="#">About</a></li>        
-        </ul>
-      </div>
-  </div>
-</nav>
+<div class="container registration">
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
       <%= form_for(@player, :html => {:class => "form-signin"}, url: player_registration_path(@player))  do |f| %>
@@ -33,6 +21,7 @@
       
     </div>
   </div>
+</div>
 
 
 

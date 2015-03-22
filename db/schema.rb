@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20150316000753) do
   end
 
   create_table "players", force: true do |t|
-    t.integer  "points"
+    t.integer  "points",                 default: 0
     t.string   "tagline"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false

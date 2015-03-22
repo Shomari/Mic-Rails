@@ -7,11 +7,35 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container">
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">Mic</a>
+		</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Fourm</a></li>
+					<% if current_player ==  nil %>
+						<li><%= link_to 'Create account', new_player_registration_path  %></li>
+						<li><button class="btn navbar-btn btn-primary" id="login-btn">Login</button></li>
+					<% end %>
+					<% if current_player != nil %>
+						<li><%= link_to 'Logout', destroy_player_session_path, :method => "delete"  %></li>
+						<li><%= link_to "Edit profile", edit_players_console_path(current_player) %></li>
+						<li><%= link_to 'Recents', player_recently_addeds_path(current_player) %></li>
+						<% if @PS4 == nil %>
+							<li><%= link_to 'Start a Session', player_path(current_player) %></li>
+						<% end %>
+
+					<% end %>
+
+				</ul>
+			</div>
+	</div>
+</nav>
 
 	<%= yield %>
-	<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+
 </div>
 
 </body>

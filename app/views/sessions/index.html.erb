@@ -1,27 +1,14 @@
-<nav class="navbar navbar-default navbar-inverse">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="/">Mic</a>
-		</div>
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Fourm</a></li>
-					<li><%= link_to 'Logout', destroy_player_session_path, :method => "delete"  %></li>
-				</ul>
-			</div>
-	</div>
-</nav>
-<div class="container">
+<div class="container session_container">
 	<div class="row">
 	<% @sessions.each_with_index do |session, index| %>
-		<% if index < 3 %>a
-				<div class="col-md-4">
-				<%= render partial: "online", locals: {session: session} %>
+		<% if index < 3 %>
+				<div class="col-md-4 session_box">
+					<%= render partial: "online", locals: {session: session} %>
 				</div>
 		<% else %>
-
+			</div>
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-4 session_box">
 					<%= render partial: "online", locals: {session: session} %>
 				</div>
 		<% end %>

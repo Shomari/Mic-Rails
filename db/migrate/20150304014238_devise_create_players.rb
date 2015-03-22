@@ -1,7 +1,7 @@
 class DeviseCreatePlayers < ActiveRecord::Migration
   def change
     create_table(:players) do |t|
-      t.integer :points
+      t.integer :points, :default => 0
       t.string  :tagline
       
       ## Database authenticatable

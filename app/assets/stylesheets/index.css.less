@@ -1,5 +1,12 @@
+@import url(http://fonts.googleapis.com/css?family=Revalia);
+@import url(http://fonts.googleapis.com/css?family=Luckiest+Guy);
+@import url(http://fonts.googleapis.com/css?family=Arimo);
+
+@font-face { font-family: test; src: url('fonts/VCR_OSD_MONO.ttf'); } 
+
 #login{
-	padding-bottom: 10px;
+	position: fixed;
+	// padding-bottom: 10px;
 	border: solid;
 	background-color: white;
 	bottom: 200px;
@@ -7,5 +14,49 @@
 }
 
 body{
-	background-color: #009999;
+	 background-color: #009999;
+	  background-repeat: no-repeat;
+	  background-size: 100%;
+}
+
+#headliner{
+	// background: url(http://gameswiki.net/wp-content/uploads/2015/02/Evolve.jpg);
+	// color: white;
+	background: image-url('evolve_wide.jpg');
+	background-repeat: no-repeat;
+	background-size: 100%;
+	color: black;	
+	height: 800px;
+}
+
+#main-text{
+	font-family: 'Arimo', sans-serif;
+	font-size: 150%;
+
+}
+
+#tagline{
+	font-family: 'Revalia', cursive;
+	font-size: 550%;
+}
+
+.navbar-brand{
+	font-family: 'Luckiest Guy', cursive;
+	font-size: 400%;
+	padding-top: 25px;
+}
+
+#count{
+	background-color: white;
+	opacity: 0.6;
+
+	margin-top: 40px;
+	padding-bottom: 140px;
+	border-radius: 10px;
+}
+
+#count p{
+	margin-top: 40px;
+	font-family: 'Arimo', sans-serif;
+	font-size: 200%;
 }

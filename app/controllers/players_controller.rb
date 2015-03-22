@@ -5,8 +5,7 @@ class PlayersController < ApplicationController
 	def index
 		@player = Player.new
 		#@xbsessions = Session.where('(consoles_game_id = ? AND created_at > ?)', game, Time.now - 1.hour)
-		@sessions = Session.where('(created_at > ?)', Time.now - 1.hour).group("consoles_game_id")
-	
+		@sessions = Session.where('(created_at > ?)', Time.now - 1.hour).group("consoles_game_id").to_a		
 	end
 
 	def new
@@ -39,7 +38,7 @@ class PlayersController < ApplicationController
 		@player = current_player
 		@consoles = PlayersConsole.where(player: @player)
 		@PS4 = ps_games
-		@XB1 = xbox_games
+		@XB1 = xbox_games		
 	end
 
 	private
