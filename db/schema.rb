@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20150316000753) do
 
-  create_table "answer_books", force: true do |t|
+  create_table "answer_books", force: :cascade do |t|
     t.integer  "player_id"
     t.integer  "question_id"
     t.integer  "answer_id"
@@ -21,34 +21,34 @@ ActiveRecord::Schema.define(version: 20150316000753) do
     t.datetime "updated_at"
   end
 
-  create_table "answers", force: true do |t|
+  create_table "answers", force: :cascade do |t|
     t.string   "answer"
     t.integer  "question_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "consoles", force: true do |t|
+  create_table "consoles", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "consoles_games", force: true do |t|
+  create_table "consoles_games", force: :cascade do |t|
     t.integer  "console_id"
     t.integer  "game_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "games", force: true do |t|
+  create_table "games", force: :cascade do |t|
     t.string   "name"
     t.string   "console"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "guesses", force: true do |t|
+  create_table "guesses", force: :cascade do |t|
     t.integer  "friend_id"
     t.integer  "player_id"
     t.integer  "question_id"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20150316000753) do
     t.datetime "updated_at"
   end
 
-  create_table "players", force: true do |t|
+  create_table "players", force: :cascade do |t|
     t.integer  "points",                 default: 0
     t.string   "tagline"
     t.string   "email",                  default: "", null: false
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20150316000753) do
   add_index "players", ["email"], name: "index_players_on_email", unique: true
   add_index "players", ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true
 
-  create_table "players_consoles", force: true do |t|
+  create_table "players_consoles", force: :cascade do |t|
     t.string   "gtag"
     t.integer  "player_id"
     t.integer  "console_id"
@@ -85,20 +85,20 @@ ActiveRecord::Schema.define(version: 20150316000753) do
     t.datetime "updated_at"
   end
 
-  create_table "questions", force: true do |t|
+  create_table "questions", force: :cascade do |t|
     t.string   "inquiry"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "recently_addeds", force: true do |t|
+  create_table "recently_addeds", force: :cascade do |t|
     t.integer  "player_id"
     t.integer  "friend_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "sessions", force: true do |t|
+  create_table "sessions", force: :cascade do |t|
     t.integer  "consoles_game_id"
     t.integer  "players_console_id"
     t.datetime "created_at"

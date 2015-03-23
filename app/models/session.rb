@@ -4,7 +4,7 @@ class Session < ActiveRecord::Base
 	
 	belongs_to :consoles_game
 
-	def check_actives
+	def self.check_actives
 		Session.where("(created_at > ?)", Time.now - 1.hour)
 	end
 end

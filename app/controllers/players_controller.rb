@@ -22,21 +22,22 @@ class PlayersController < ApplicationController
 		redirect_to player_path(player)		
 	end
 
-	def create		
-		player = Player.new(player_params)
-		if player.save
-			session[:player] = player.id
-			redirect_to new_players_console_path
-		else
-			#player.save
-			flash[:notice] = player.errors
-			redirect_to(:back)
-		end
-	end
+	# def create		
+	# 	player = Player.new(player_params)
+	# 	binding.pry
+	# 	if player.save
+	# 		session[:player] = player.id
+	# 		redirect_to new_players_console_path
+	# 	else
+	# 		#player.save
+	# 		flash[:notice] = player.errors
+	# 		redirect_to(:back)
+	# 	end
+	# end
 
 	def show
 		@player = current_player
-		@consoles = PlayersConsole.where(player: @player)
+		@gtags = hashify_gtags
 		@PS4 = ps_games
 		@XB1 = xbox_games		
 	end
@@ -44,7 +45,16 @@ class PlayersController < ApplicationController
 	private
 
 	def player_params
-		params.require(:player).permit(:email, :password)
+		params.require(:player).permit(:email, :password, :tagline)
+	end
+
+	def hashify_gtags
+		systems = PlayersConsole.where(player: current_player).to_a
+		consoles = {}
+		systems.each do |system|
+			system.console_id == 1 ? consoles[:xbl] = system.gtag : consoles[:psn] = system.gtag
+		end	
+		consoles
 	end
 
 end

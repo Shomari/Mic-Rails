@@ -1,7 +1,7 @@
 <div class="container registration">
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
-      <%= form_for(@player, :html => {:class => "form-signin"}, url: player_registration_path(@player))  do |f| %>
+      <%= simple_form_for(@player, :html => {:class => "form-signin"}, url: player_registration_path(@player))  do |f| %>
        <%= devise_error_messages! %>
       <h2 class="form-signin-heading text-center">Create your account</h2>
         <%= f.label :email, :class => "sr-only" %>
@@ -15,6 +15,9 @@
 
         <%= f.label "confirm password", :class => "sr-only" %>
         <%= f.password_field :password_confirmation, :class => "form-control", :placeholder => " Confirm Password", :required => true  %>
+
+        <%= f.label :tagline, :class => "sr-only" %>
+        <%= f.text_field :tagline, :class => "form-control", :placeholder => "Enter catchy tagline", :required => true %>
 
         <%= f.submit "Submit", :class => "btn btn-lg btn-primary btn-block"  %>
       <% end  %>    
