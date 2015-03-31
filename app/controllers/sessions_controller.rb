@@ -3,25 +3,20 @@ class SessionsController < ApplicationController
 	def index
 		@player = current_player
 		console = Console.where(name: session[:console])
-		pc = PlayersConsole.where(player: @player, console: console).first
+		pc = PlayersConsole.where(player: current_player, console: console).first
 		
-		redirect_to player_show_path(@player), notice: "You don't have a tag associated with this console." and return if pc == nil
-	
+		if pc == nil
+			redirect_to player_show_path(@player), notice: "You don't have a tag associated with this console." and return 
+		end	
 		
-		if session[:psgames] == ""
-			holder = session[:xbgames]
-		else
-			holder = session[:psgames]
-		end
+		session[:psgames] == "" ? holder = session[:xbgames] : 	holder = session[:psgames]	
 		game = ConsolesGame.find(holder)
-		check = Session.where('(players_console_id = ? AND created_at > ?)', pc.id, Time.now - 1.hour)
-		if check.length < 1
-			Session.create(consoles_game: game, players_console: pc)
-		end
+		Session.create_session(game)
+
 		@recently_added = RecentlyAdded.new		
-		@sessions = Session.where('(consoles_game_id = ? AND created_at > ?)', game, Time.now - 1.hour)
-		render :index
-	
+		@sessions = Session.get_active_session
+
+		render :index	
 	end
 
 	def check_question
@@ -42,13 +37,16 @@ class SessionsController < ApplicationController
 		#render question ask page
 	end
 
-	#I need to post to here from ab_controller#create but can't so had to duplicate code
+	#I need to post to here from ab_controller#create but can't redirect to a post
+	#method so had to duplicate code in index
 	def create
 		player = current_player
 		console = Console.where(name: session[:console])
 		pc = PlayersConsole.where(player: player, console: console).first
 		
-		redirect_to player_show_path(player), notice: "You don't have a tag associated with this console." and return if pc == nil
+		if pc == nil
+			redirect_to player_show_path(player), notice: "You don't have a tag associated with this console." and return
+		end
 	
 		
 		if params[:psgames] == ""

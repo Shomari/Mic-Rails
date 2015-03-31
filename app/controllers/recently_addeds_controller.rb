@@ -1,15 +1,13 @@
 class RecentlyAddedsController < ApplicationController
 
 	def index		
-		@recents = RecentlyAdded.where("player_id = ? AND created_at > ?",
-				 current_player.id, 1.week.ago )
+		@recents = RecentlyAdded.get_recents(current_player.id)
 	end
 
-	def create
-		player = current_player
-		ra = RecentlyAdded.where("player_id = ? AND referrer_id =? AND created_at < ?",
-				 player.id, params[:recently_added][:referrer], 1.week.ago ).last
-		RecentlyAdded.create(player: player, referrer_id: params[:recently_added][:referrer]) if ra == nil
+	def create		
+		if RecentlyAdded.already_added?(current_player.id, params[:recently_added][:referrer] )
+			RecentlyAdded.create(player: player, referrer_id: params[:recently_added][:referrer])
+		end
 	end
 
 	def show

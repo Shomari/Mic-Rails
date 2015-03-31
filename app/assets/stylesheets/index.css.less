@@ -1,8 +1,10 @@
-@import url(http://fonts.googleapis.com/css?family=Revalia);
 @import url(http://fonts.googleapis.com/css?family=Luckiest+Guy);
-@import url(http://fonts.googleapis.com/css?family=Arimo);
 
 @font-face { font-family: test; src: url('fonts/VCR_OSD_MONO.ttf'); } 
+
+.navbar{
+	margin-bottom: 0px;
+}
 
 #login{
 	position: fixed;
@@ -19,25 +21,21 @@ body{
 	  background-size: 100%;
 }
 
-#headliner{
+.jumbotron{
 	// background: url(http://gameswiki.net/wp-content/uploads/2015/02/Evolve.jpg);
 	// color: white;
-	background: image-url('evolve_wide.jpg');
-	background-repeat: no-repeat;
+	background: image-url('evolve_wide.jpg') no-repeat center center;
 	background-size: 100%;
-	color: black;	
 	height: 800px;
 }
 
-#main-text{
-	font-family: 'Arimo', sans-serif;
-	font-size: 150%;
 
-}
 
 #tagline{
-	font-family: 'Revalia', cursive;
-	font-size: 550%;
+	font-family: 'Merriweather', serif;
+	font-weight: bold;
+	font-size: 800%;
+	color: #009999;
 }
 
 .navbar-brand{
@@ -48,8 +46,7 @@ body{
 
 #count{
 	background-color: white;
-	opacity: 0.6;
-
+	background-color: rgba(255,255,255,0.6);
 	margin-top: 40px;
 	padding-bottom: 140px;
 	border-radius: 10px;
@@ -59,4 +56,42 @@ body{
 	margin-top: 40px;
 	font-family: 'Arimo', sans-serif;
 	font-size: 200%;
+}
+
+#second_section{
+	// background: image-url('GTAV.jpg');
+	// border-: solid;
+	background: image-url('ps4.jpg') no-repeat center center;
+	background-size: 100%;
+	border-color: red;
+	// background-color: #009999;
+	height: 700px;
+	border-top: solid;
+	border-width: 7px;
+	padding-top: 30px;
+}
+
+#second_section p{
+	font-size: 200%;
+}
+
+#third_section{
+	background-color: white;
+	height: 400px;
+	border-radius: 10px;
+	padding-top: 80px;
+	margin-bottom: 40px;
+	// border-top: solid;
+	// border-width: 7px;
+}
+
+#third_section p{
+	font-size: 200%;
+}
+
+.footer{
+	background-color: red;
+	height: 70px;
+	width: 100%;
+	display: none;
 }

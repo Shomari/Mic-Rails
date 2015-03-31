@@ -1,11 +1,11 @@
 class GuessesController < ApplicationController
 
 	def index
-		if is_not_recent?(params[:friend])
+		if RecentlyAdded.is_not_recent?(current_player, params[:friend])
 		 redirect_to :back, flash: {error: "You haven't recently played with this player"} and return
-		elsif no_answer_submitted?(params[:friend])
+		elsif AnswerBook.no_answer_submitted?(current_question, params[:friend])
 		 redirect_to :back, flash: {error: "This person hasn't answered this question yet"} and return
-		elsif already_guessed?(params[:friend]) 
+		elsif Guess.already_guessed?(params[:friend]) 
 		 redirect_to :back, flash: {error: "You already made a guess for this question"} and return
 		end
 
@@ -17,11 +17,10 @@ class GuessesController < ApplicationController
 	end
 
 	def create
-			question = Question.last
-		 	guess = Guess.create(player: current_player, question: Question.last,
+		 	guess = Guess.create(player: current_player, question: current_question,
 		 					answer_id: params[:guess][:answer_id], friend_id: session[:friend])
 		 	answer_bk = AnswerBook.where(question: question, player: session[:friend]).last
-		 	if check_answer?(guess, answer_bk)
+		 	if guess.check_answer?(answer_bk)
 		 		current_player.correct_guess
 		 		redirect_to player_recently_addeds_path(current_player), flash: {notice: "Correct! 10 points to you good sir."} and return
 		 	else

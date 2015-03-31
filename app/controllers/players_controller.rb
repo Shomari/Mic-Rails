@@ -37,7 +37,7 @@ class PlayersController < ApplicationController
 
 	def show
 		@player = current_player
-		@gtags = hashify_gtags
+		@gtags = PlayersConsole.hashify_gtags(current_player)
 		@PS4 = ps_games
 		@XB1 = xbox_games		
 	end
@@ -46,15 +46,6 @@ class PlayersController < ApplicationController
 
 	def player_params
 		params.require(:player).permit(:email, :password, :tagline)
-	end
-
-	def hashify_gtags
-		systems = PlayersConsole.where(player: current_player).to_a
-		consoles = {}
-		systems.each do |system|
-			system.console_id == 1 ? consoles[:xbl] = system.gtag : consoles[:psn] = system.gtag
-		end	
-		consoles
 	end
 
 end

@@ -1,18 +1,39 @@
-<div class="container">
-	<div class="row" id="headliner">
-		<div class="col-md-8">
+<div class="jumbotron">
+	<div class="container">
+		<div class="col-md-6">
 			<h1 id="tagline">Never Play Alone</h1>
-			<ul id="main-text">
-				<li>Find gamers online now that use headsets</li>
-				<li>Have more fun playing mutiplayer games</li>
-			</ul>
 		</div>
-		<div class="col-md-3">
-			<div class="row" id="count">
-				<div class="col-md-12">
-					<p><%= @sessions.count  %> players currently online.</p>
-				</div>
-			</div>
+		<div class="col-md-3 col-md-offset-1">
+			<p><%= @sessions.count  %> players currently online.</p>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row text-center" id="second_section">
+		<div class="col-md-6">
+			<h1>Headset Required </h1>
+			<p>Multiplayer games are simply more fun when you are with a group of active players.</p>
+		</div>
+		<div class="col-md-6">
+			<h1>How it Works</h1>
+			<p>Login, choose a system and game to see other gamers who are playing right now.  Your name will also be added to the now playing list.</p>
+		</div>
+	</div>
+	<div class="row text-center" id="third_section">
+		<div class="col-md-6">
+			<h1>Break the Ice</h1>
+			<p>Answer icebreaker questions about gamers you have played with to earn points and win contests</p>
+		</div>
+		<div class="col-md-6">
+			<h1>Make console gaming fun again</h1>
+			<p>Multiplayer games are simply more fun when you are with a group of active players.</p>	
+		</div>
+	</div>
+	<div class="footer">
+		<div class="container">
+			<ul>
+				<li><%= link_to "contact", '#'  %>
+			</ul>
 		</div>
 	</div>
 

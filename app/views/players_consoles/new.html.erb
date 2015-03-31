@@ -1,5 +1,6 @@
 <div class="container">
-	<%= form_tag('/players_consoles', :class => "form-signin", :id => "create_form") %>
+	<%= simple_form_for(@players_consoles) do |f| %>
 	<%= render :partial => 'form'  %>
+	<% end %>
 </div>
 
