@@ -9,13 +9,12 @@ class SessionsController < ApplicationController
 			redirect_to player_show_path(@player), notice: "You don't have a tag associated with this console." and return 
 		end	
 		
-		session[:psgames] == "" ? holder = session[:xbgames] : 	holder = session[:psgames]	
-		game = ConsolesGame.find(holder)
-		Session.create_session(game)
+		session[:psgames] == "" ? holder = session[:xbgames] : holder = session[:psgames]	
+		console_game = ConsolesGame.find(holder)
+		Session.create_session(console_game, pc)
 
 		@recently_added = RecentlyAdded.new		
-		@sessions = Session.get_active_session
-
+		@sessions = Session.get_active_session(console_game)
 		render :index	
 	end
 

@@ -14,93 +14,93 @@
 ActiveRecord::Schema.define(version: 20150316000753) do
 
   create_table "answer_books", force: :cascade do |t|
-    t.integer  "player_id"
-    t.integer  "question_id"
-    t.integer  "answer_id"
+    t.integer  "player_id",   limit: 4
+    t.integer  "question_id", limit: 4
+    t.integer  "answer_id",   limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "answers", force: :cascade do |t|
-    t.string   "answer"
-    t.integer  "question_id"
+    t.string   "answer",      limit: 255
+    t.integer  "question_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "consoles", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "consoles_games", force: :cascade do |t|
-    t.integer  "console_id"
-    t.integer  "game_id"
+    t.integer  "console_id", limit: 4
+    t.integer  "game_id",    limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "games", force: :cascade do |t|
-    t.string   "name"
-    t.string   "console"
+    t.string   "name",       limit: 255
+    t.string   "console",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "guesses", force: :cascade do |t|
-    t.integer  "friend_id"
-    t.integer  "player_id"
-    t.integer  "question_id"
-    t.integer  "answer_id"
+    t.integer  "friend_id",   limit: 4
+    t.integer  "player_id",   limit: 4
+    t.integer  "question_id", limit: 4
+    t.integer  "answer_id",   limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "players", force: :cascade do |t|
-    t.integer  "points",                 default: 0
-    t.string   "tagline"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.integer  "points",                 limit: 4,   default: 0
+    t.string   "tagline",                limit: 255
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "encrypted_password",     limit: 255, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "players", ["email"], name: "index_players_on_email", unique: true
-  add_index "players", ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true
+  add_index "players", ["email"], name: "index_players_on_email", unique: true, using: :btree
+  add_index "players", ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true, using: :btree
 
   create_table "players_consoles", force: :cascade do |t|
-    t.string   "gtag"
-    t.integer  "player_id"
-    t.integer  "console_id"
+    t.string   "gtag",       limit: 255
+    t.integer  "player_id",  limit: 4
+    t.integer  "console_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string   "inquiry"
+    t.string   "inquiry",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "recently_addeds", force: :cascade do |t|
-    t.integer  "player_id"
-    t.integer  "friend_id"
+    t.integer  "player_id",  limit: 4
+    t.integer  "friend_id",  limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "sessions", force: :cascade do |t|
-    t.integer  "consoles_game_id"
-    t.integer  "players_console_id"
+    t.integer  "consoles_game_id",   limit: 4
+    t.integer  "players_console_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end

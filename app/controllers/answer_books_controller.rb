@@ -1,6 +1,7 @@
 class AnswerBooksController < ApplicationController
 	def create
-		AnswerBook.create(answer_book_params, player: current_player)
+		answer_book = AnswerBook.new(answer_book_params)
+		answer_book.update_attributes(player: current_player)
 		redirect_to sessions_path
 	end
 

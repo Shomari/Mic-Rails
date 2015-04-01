@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   devise_for :players,  controllers: { sessions: "players/sessions", registrations: "players/registrations" }
     
   resources :players do 
-    resources :recently_addeds
+    resources :recently_addeds do 
+      resources :guesses, only: [:create, :index] 
+
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -10,7 +13,6 @@ Rails.application.routes.draw do
 
   root 'players#index'
 
-  resources :guesses, only: [:create, :index] 
   resources :players_consoles
 
   resources :sessions, only: [:create, :index]

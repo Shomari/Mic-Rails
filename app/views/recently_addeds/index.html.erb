@@ -15,7 +15,7 @@
 				<td><%= recent.friend.id %></td>
 				<td>need to add game functionality</td>
 				<td><%= recent.created_at %></td>
-				<td><%= button_to 'Answer Question', guesses_path(guesser: "#{recent.player.id}", friend: "#{recent.friend.id}"), method: :get %></td>				
+				<td><%= button_to 'Answer Question', player_recently_added_guesses_path(player: "#{recent.player.id}", recently_added_id: "#{recent.id}"), method: :get %></td>				
 			</tr>
 			<% end %>
 		</table>

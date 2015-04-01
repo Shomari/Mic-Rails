@@ -7,8 +7,8 @@ class RecentlyAdded < ActiveRecord::Base
 	end
 
 	def self.already_added?(current_player_id, friend_id)
-		ra = RecentlyAdded.where("player_id = ? AND friend_id =? AND created_at < ?", current_player_id, friend_id, 1.week.ago ).last
-		if ra ? false : true
+		recently_added = RecentlyAdded.where("player_id = ? AND friend_id =? AND created_at < ?", current_player_id, friend_id, 1.week.ago ).last
+		recently_added ? false : true
 	end
 
 	def self.is_not_recent?(current_player, friend_id)

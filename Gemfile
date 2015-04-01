@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -48,6 +48,11 @@ gem 'faker'
 
 group :test do
   gem 'shoulda-matchers', require: false
+end
+
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 # Use ActiveModel has_secure_password
