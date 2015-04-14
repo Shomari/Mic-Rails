@@ -4,8 +4,8 @@ class PlayersConsole < ActiveRecord::Base
 
 	has_many :sessions
 
-	validates :gtag, :player_id, :console_id, presence: true
-	# validates :gtag, :length, :minimum(2)
+	validates :player_id, :console_id, presence: true
+	validates :gtag, length: { in: 3..19 }
 
 	def self.hashify_gtags(current_player)
 		consoles = {}

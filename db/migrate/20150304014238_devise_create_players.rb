@@ -3,6 +3,7 @@ class DeviseCreatePlayers < ActiveRecord::Migration
     create_table(:players) do |t|
       t.integer :points, :default => 0
       t.string  :tagline
+      t.string  :handle
       
       ## Database authenticatable
       t.string :email,              null: false, default: ""

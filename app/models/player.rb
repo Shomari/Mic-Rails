@@ -17,4 +17,8 @@ class Player < ActiveRecord::Base
   	self.save!
   end
 
+  def forem_name
+    handle
+  end
+
 end

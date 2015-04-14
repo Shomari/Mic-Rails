@@ -17,7 +17,7 @@ class PlayersController < ApplicationController
 	end
 
 	def verify		
-		player = Player.where(email: params[:player][:email], password: params[:player][:password]).first
+		player = Player.where(email: params[:player][:handle], password: params[:player][:password]).first
 		session[:player] = player.id
 		redirect_to player_path(player)		
 	end

@@ -7,10 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-player1 = Player.create!(email: "test1@gmail.com", password: "password", tagline: "Realest nigga alive")
-player2 = Player.create!(email: "test2@gmail.com", password: "password", tagline: "I like boys")
-player3 = Player.create!(email: "test3@gmail.com", password: "password", tagline: "Best of the best")
-player4 = Player.create!(email: "test4@gmail.com", password: "password", tagline: "durp")
+player1 = Player.create!(email: "test1@gmail.com", password: "password", tagline: "Realest nigga alive", handle: "test1")
+player2 = Player.create!(email: "test2@gmail.com", password: "password", tagline: "I like boys", handle: "test2")
+player3 = Player.create!(email: "test3@gmail.com", password: "password", tagline: "Best of the best", handle: "test3")
+player4 = Player.create!(email: "test4@gmail.com", password: "password", tagline: "durp", handle: "test4")
 
 xbox = Console.create!(name: "XB1")
 playstation = Console.create!(name: "PS4")

@@ -11,9 +11,11 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require twitter/bootstrap
 //= require turbolinks
+//= require forem
 //= require_tree .

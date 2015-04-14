@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails'
+gem 'rails', '~> 4.1.9'
 # Use sqlite3 as the database for Active Record
 gem 'mysql2'
 # Use SCSS for stylesheets
@@ -17,6 +17,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-validation-rails'
+gem 'jquery-turbolinks'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -36,6 +37,10 @@ gem 'whenever', :require => false
 gem 'devise'
 gem 'simple_form'
 
+gem 'forem', :path => '/Users/shomari/Desktop/forem'
+gem 'forem-bootstrap', :github => "radar/forem-bootstrap"
+gem 'will_paginate', '3.0.5'
+
 #Bootstrap
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
@@ -51,8 +56,8 @@ group :test do
 end
 
 group :development do
-  gem "better_errors"
-  gem "binding_of_caller"
+  # gem "better_errors"
+  # gem "binding_of_caller"
 end
 
 # Use ActiveModel has_secure_password

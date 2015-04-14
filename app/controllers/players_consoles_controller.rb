@@ -1,27 +1,21 @@
 class PlayersConsolesController < ApplicationController
 
 	def new
-		@players_console = PlayersConsole.new		
+		@players_consoles = PlayersConsole.new		
 	end
 
-	#worst method ever?
 	def create		
-		consoles = ["Xbox_One", "Playstation_4"]
-		binding.pry
 		#finish refactoring this method and view with simple form to get system params in one form
-		PlayersConsole.create(xbox_params, player: current_player, console_id: XBOX)
-		PlayersConsole.create(ps4_params, player: current_player, console_id: XBOX)
-		
-		# params.each do |key, value|
-		# 	binding.pry
-		# 	if consoles.include? key
-		# 		if key == "Xbox_One"
-		# 			PlayersConsole.create!(player: current_player, console_id: XBOX, gtag: params[:XBL] )
-		# 		else
-		# 			PlayersConsole.create!(player: current_player, console_id: PLAYSTATION, gtag: params[:PSN] )
-		# 		end
-		# 	end
-		# end 
+		xbox = PlayersConsole.new(gtag: params[:XBL])
+		xbox.player = current_player
+		xbox.console_id = XBOX
+		xbox.save
+
+		playstation = PlayersConsole.new(gtag: params[:PSN])
+		playstation.player = current_player
+		playstation.console_id = PLAYSTATION
+		playstation.save
+
 		redirect_to player_show_path(current_player)
 	end
 
@@ -52,11 +46,11 @@ class PlayersConsolesController < ApplicationController
 	private
 
 	def xbox_params
-		params.require(:XBL)#.permit(:XBL)
+		params.require(:gtag).permit(:XBL)
 	end
 
 	def ps4_params
-		params.require(:players_console).permit(:PSN)
+		params.require(:gtag).permit(:PSN)
 	end
 
 	def players_console_params

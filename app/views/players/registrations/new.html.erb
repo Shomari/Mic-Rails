@@ -4,6 +4,9 @@
       <%= simple_form_for(@player, :html => {:class => "form-signin"}, url: player_registration_path(@player))  do |f| %>
        <%= devise_error_messages! %>
       <h2 class="form-signin-heading text-center">Create your account</h2>
+        <%= f.label :handle, :class => "sr-only" %>
+        <%= f.text_field :handle, :class => "form-control", :placeholder => "Create a handle", :required => true %>
+
         <%= f.label :email, :class => "sr-only" %>
         <%= f.email_field :email, :class => "form-control", :placeholder => "Enter email", :required => true %>
 
