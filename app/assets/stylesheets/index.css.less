@@ -1,4 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Luckiest+Guy);
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:900);
 
 @font-face { font-family: test; src: url('fonts/VCR_OSD_MONO.ttf'); } 
 
@@ -8,7 +10,7 @@
 
 #login{
 	position: fixed;
-	// padding-bottom: 10px;
+  padding-bottom: 30px;
 	border: solid;
 	background-color: white;
 	bottom: 200px;
@@ -16,7 +18,7 @@
 }
 
 body{
-	 background-color: #009999;
+	 background-color: black;
 	  background-repeat: no-repeat;
 	  background-size: 100%;
 }
@@ -24,18 +26,55 @@ body{
 .jumbotron{
 	// background: url(http://gameswiki.net/wp-content/uploads/2015/02/Evolve.jpg);
 	// color: white;
+	margin-bottom: 0px;
 	background: image-url('evolve_wide.jpg') no-repeat center center;
-	background-size: 100%;
+	background-size: cover;
 	height: 800px;
 }
 
+#first_content{
+	padding-top: 80px;
+}
 
+.editContent{
+	h1{
+		font-family: 'Lato', sans-serif;
+		color: #4FA6E0;
+	}
+	p{}
+}
+
+.editContent:nth-of-type(2){
+	color: #7D7D81;
+	font-family: 'Lato', sans-serif;
+	font-weight: 100;
+}
+
+.img-responsive{
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
+
+.content-1-1{
+	 background: image-url('destiny.jpg') no-repeat center center;
+	 background-size: cover;
+	 height: 500px;
+	 h1{
+	 	font-family: 'Source Sans Pro', sans-serif;
+	 }
+	 p{
+	 	// color: white; 
+	 	background-color: rgba(255,255,255,0.6);
+	 }
+
+
+}
 
 #tagline{
 	font-family: 'Merriweather', serif;
 	font-weight: bold;
 	font-size: 800%;
-	color: #009999;
+	color: #4FA6E0;
 }
 
 .navbar-brand{
@@ -48,7 +87,7 @@ body{
 	background-color: white;
 	background-color: rgba(255,255,255,0.6);
 	margin-top: 40px;
-	padding-bottom: 140px;
+	padding-bottom: 40px;
 	border-radius: 10px;
 }
 
@@ -61,14 +100,15 @@ body{
 #second_section{
 	// background: image-url('GTAV.jpg');
 	// border-: solid;
-	background: image-url('ps4.jpg') no-repeat center center;
-	background-size: 100%;
-	border-color: red;
-	// background-color: #009999;
-	height: 700px;
-	border-top: solid;
-	border-width: 7px;
-	padding-top: 30px;
+	// background: image-url('ps4.jpg') no-repeat center center;
+	// background-size: 100%;
+	// border-color: red;
+	// // background-color: #009999;
+	// height: 700px;
+	// border-top: solid;
+	// border-width: 7px;
+	// padding-top: 30px;
+	background-color: white;
 }
 
 #second_section p{
@@ -89,9 +129,10 @@ body{
 	font-size: 200%;
 }
 
-.footer{
-	background-color: red;
-	height: 70px;
-	width: 100%;
-	display: none;
+#footer{
+	height: 35px;
+	.editContent{
+		padding-top: 8px;
+		color: white;
+	}
 }

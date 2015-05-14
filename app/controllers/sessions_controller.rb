@@ -11,10 +11,11 @@ class SessionsController < ApplicationController
 		
 		session[:psgames] == "" ? holder = session[:xbgames] : holder = session[:psgames]	
 		console_game = ConsolesGame.find(holder)
-		Session.create_session(console_game, pc)
 
 		@recently_added = RecentlyAdded.new		
 		@sessions = Session.get_active_session(console_game)
+		Session.create_session(console_game, pc)
+
 		render :index	
 	end
 
@@ -54,9 +55,8 @@ class SessionsController < ApplicationController
 			holder = session[:psgames]
 		end
 		game = ConsolesGame.find(holder)
-		Session.find_or_create_by(consoles_game: game, players_console: pc)
 		@sessions = Session.includes(:players_console, :players).where('(consoles_game_id = ? AND created_at > ?)', game, Time.now - 1.hour).order('RAND()').first(6)
-		binding.pry
+		Session.find_or_create_by(consoles_game: game, players_console: pc)		
 		render :index
 	end
 

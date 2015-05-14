@@ -7,7 +7,7 @@ class Players::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  def create
+  def create    
     super
   end
 
@@ -23,7 +23,7 @@ class Players::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.for(:sign_in) << :attribute
   # end
 
-def after_sign_in_path_for(resource)
+def after_sign_in_path_for(resource)  
   player_show_path(resource)
 end
 end

@@ -16,11 +16,11 @@ class PlayersController < ApplicationController
 		
 	end
 
-	def verify		
-		player = Player.where(email: params[:player][:handle], password: params[:player][:password]).first
-		session[:player] = player.id
-		redirect_to player_path(player)		
-	end
+	# def verify		
+	# 	player = Player.where(email: params[:player][:handle], password: params[:player][:password]).first
+	# 	session[:player] = player.id
+	# 	redirect_to player_path(player)		
+	# end
 
 	# def create		
 	# 	player = Player.new(player_params)

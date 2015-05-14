@@ -3,43 +3,70 @@
 		<div class="col-md-6">
 			<h1 id="tagline">Never Play Alone</h1>
 		</div>
-		<div class="col-md-3 col-md-offset-1">
+		<div class="col-md-3 col-md-offset-1 text-center" id="count">
+			<% flash.each do |f| %>	
+				<%= f[1]  %>
+			<% end %>
 			<p><%= @sessions.count  %> players currently online.</p>
 		</div>
 	</div>
 </div>
-<div class="container">
-	<div class="row text-center" id="second_section">
-		<div class="col-md-6">
-			<h1>Headset Required </h1>
-			<p>Multiplayer games are simply more fun when you are with a group of active players.</p>
+	<!-- Start Content Block 1-5 v1 -->
+  <section class="content-1-5 content-block" id="second_section">
+  			
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-12">
+				<div class="editContent" id="first_content">
+					<h1>Headset Required</h1>
+				</div>
+				<div class="editContent">
+					<p class="lead"> Multiplayer games are simply more fun when you are with a group of active players. Login, choose a system and game to see other gamers who are playing right now.  Your name will also be added to the now playing list.</p>
+				</div>
+				<div class="editContent">
+				</div>
+			</div>
+		
+			<div class="col-lg-5 col-lg-offset-1 col-md-6 col-sm-12">
+				<img class="img-responsive" src="http://placehold.it/600x500">
+			</div>
+		</div><!-- /.row -->
+	</div><!-- /.container -->
+	
+  </section>
+  <!-- // End Content Block 1-5 v1 -->
+	<!-- Start Content Block 1-1 -->
+	<section id="content-1-1" class="content-block content-1-1 min-height-1200px bg-white">
+		<div class="container text-center">
+			<div class="editContent">
+				<h1>Make new friends, win cool contests</h1>
+			</div>
+			<div class="col-sm-8 col-sm-offset-2">
+				<div class="editContent">
+					<p class="lead">Ask and answer icebreaker questions to start the debate.  Monthly prises for players with the highest point totals.</p>
+				</div>
+			</div>
 		</div>
-		<div class="col-md-6">
-			<h1>How it Works</h1>
-			<p>Login, choose a system and game to see other gamers who are playing right now.  Your name will also be added to the now playing list.</p>
+	</section>
+    <!--// END Content Block 1-1 -->
+
+  <!-- Start Footer Copyright Bar -->
+	<div class="copyright-bar bg-black">
+		<div class="container" id="footer">
+			<div class="editContent">
+				<p class="pull-left small">© Mic.social</p>
+			</div>
+			<div class="editContent">
+				<p class="pull-right small">Made with <span class="fa fa-heart pomegranate"></span> in Chicago</p>
+			</div>
 		</div>
 	</div>
-	<div class="row text-center" id="third_section">
-		<div class="col-md-6">
-			<h1>Break the Ice</h1>
-			<p>Answer icebreaker questions about gamers you have played with to earn points and win contests</p>
-		</div>
-		<div class="col-md-6">
-			<h1>Make console gaming fun again</h1>
-			<p>Multiplayer games are simply more fun when you are with a group of active players.</p>	
-		</div>
-	</div>
-	<div class="footer">
-		<div class="container">
-			<ul>
-				<li><%= link_to "contact", '#'  %>
-			</ul>
-		</div>
-	</div>
+	<!--// END Footer Copyright Bar -->
+
 
 	<div class="row">
-		<div class="col-md-4 col-md-offset-4 text-center" id="login">
-			<%= form_for @player, :url => player_session_path, html: { class: "form-signin"} do |f| %>
+
+			<%= form_for @player, :url => player_session_path, html: { class: "form-signin col-md-4 col-md-offset-4 text-center", id: "login"} do |f| %>
 				<h2 class="form-signin-heading">Please sign in</h2>
 				<%= f.label :email, :class => "sr-only" %>
 				<%= f.text_field :email, :class => "form-control", :placeholder => "Email" %>
@@ -49,6 +76,5 @@
 
 				<%= f.submit "Submit", :class => "btn btn-lg btn-primary btn-block" %>
 			<% end  %>
-		</div>
 	</div>
 </div>
