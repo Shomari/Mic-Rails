@@ -5,7 +5,7 @@ class Guess < ActiveRecord::Base
 	belongs_to :answer
 
 	def self.already_guessed?(current_player, current_question, friend_id)
-		Guess.where(question: current_question, player: current_player, friend_id: friend_id).present?		
+		Guess.where(question: current_question, player: current_player, friend: friend_id).present?		
 	end
 
 	def check_answer?(answer_bk)

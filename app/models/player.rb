@@ -21,4 +21,12 @@ class Player < ActiveRecord::Base
     handle
   end
 
+  def xbox_tag
+    PlayersConsole.where(player: self, console_id: 1).first.gtag
+  end
+
+  def ps4_tag
+    PlayersConsole.where(player: self, console_id: 2).first.gtag
+  end
+
 end

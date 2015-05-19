@@ -43,5 +43,5 @@ answer2 = Answer.create!(answer: "me", question: q)
 AnswerBook.create(player: player1, question: q, answer: answer1)
 AnswerBook.create(player: player2, question: q, answer: answer2)
 
-RecentlyAdded.create(player_id: player3.id, friend_id: player1.id)
-RecentlyAdded.create(player_id: player3.id, friend_id: player2.id)
+RecentlyAdded.create(player_id: player3.id, friend_pc_id: player1.id)
+RecentlyAdded.create(player_id: player3.id, friend_pc_id: player2.id)

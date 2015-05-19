@@ -4,6 +4,8 @@ class AnswerBook < ActiveRecord::Base
 	belongs_to :answer
 
 	def self.no_answer_submitted?(current_question, friend_id)
-		AnswerBook.where(question: current_question, player_id: friend_id ).empty?	 		
+		pc = PlayersConsole.find(friend_id)
+		friend = pc.player
+		AnswerBook.where(question: current_question, player: friend ).empty?	 		
 	end
 end

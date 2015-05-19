@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
-		<table class="table">
+		<table class="table table-condensed table-bordered">
 			<% flash.each do |key, value| %>
 			  <%= content_tag :div, value, class: "flash #{key}" %>
 			<% end %>
@@ -8,14 +8,14 @@
 				<th>Gamertag</th>
 				<th>Game</th>
 				<th>Date</th>
-				<th>Answer Question</th>
+				<!-- <th>Answer Question</th> -->
 			</tr>			
 			<% @recents.each do |recent| %>
 			<tr>
-				<td><%= recent.friend.id %></td>
-				<td>need to add game functionality</td>
-				<td><%= recent.created_at %></td>
-				<td><%= button_to 'Answer Question', player_recently_added_guesses_path(player: "#{recent.player.id}", recently_added_id: "#{recent.id}"), method: :get %></td>				
+				<td><%= recent.friend.gtag %></td>
+				<td><%= recent.game.name %></td>
+				<td><%= recent.created_at.strftime("%m-%d-%y %l:%M") %></td>
+				<td><%= button_to 'Guess', player_recently_added_guesses_path(player: "#{recent.player.id}", recently_added_id: "#{recent.id}"), class: "btn btn-primary", method: :get %></td>				
 			</tr>
 			<% end %>
 		</table>

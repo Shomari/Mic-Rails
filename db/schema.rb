@@ -194,7 +194,8 @@ ActiveRecord::Schema.define(version: 20150405015655) do
 
   create_table "recently_addeds", force: true do |t|
     t.integer  "player_id"
-    t.integer  "friend_id"
+    t.integer  "game_id"
+    t.integer  "friend_pc_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

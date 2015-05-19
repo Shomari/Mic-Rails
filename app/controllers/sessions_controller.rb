@@ -10,11 +10,11 @@ class SessionsController < ApplicationController
 		end	
 		
 		session[:psgames] == "" ? holder = session[:xbgames] : holder = session[:psgames]	
-		console_game = ConsolesGame.find(holder)
+		@console_game = ConsolesGame.find(holder)
 
 		@recently_added = RecentlyAdded.new		
-		@sessions = Session.get_active_session(console_game)
-		Session.create_session(console_game, pc)
+		@sessions = Session.get_active_session(@console_game, pc.id)
+		Session.create_session(@console_game, pc)
 
 		render :index	
 	end

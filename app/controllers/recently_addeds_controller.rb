@@ -5,8 +5,9 @@ class RecentlyAddedsController < ApplicationController
 	end
 
 	def create		
-		if RecentlyAdded.already_added?(current_player.id, params[:recently_added][:referrer] )
-			RecentlyAdded.create(player: current_player, friend_id: params[:recently_added][:referrer])
+		game = ConsolesGame.find(params[:recently_added][:game]).game
+		if !RecentlyAdded.already_added?(current_player.id, params[:recently_added][:referrer] )
+			RecentlyAdded.create(player: current_player, game: game, friend_pc_id: params[:recently_added][:referrer])
 		end
 		redirect_to player_path(current_player)
 	end

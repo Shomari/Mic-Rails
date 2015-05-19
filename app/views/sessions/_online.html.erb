@@ -2,7 +2,7 @@
 	<table>
 		<tr>
 			<td>Tag:</td>
-			<td> <%= session.players_console.gtag %></td>
+			<td id="player_name"> <%= session.players_console.gtag %></td>
  		</tr>
 		<tr>
 			<td>Tagline:</td>
@@ -12,7 +12,8 @@
 </div>
 <div class="row">
 	<%= simple_form_for [@player, @recently_added], method: :post do |f| %>
-		<%= f.input :referrer, :as => :hidden, :input_html => {:value => session.player.id} %>
-		<%= f.button :submit, "Add to Recents", class: "btn btn-lg btn-primary btn-block", id: "session_button" %>
+		<%= f.input :referrer, :as => :hidden, :input_html => {:value => session.players_console.id} %>
+		<%= f.input :game, :as => :hidden, :input_html => {:value => @console_game.id} %>
+		<%= f.button :submit, "Add to Recents",  class: "btn btn-lg btn-primary btn-block session_button", id: "session_button" %>
 	<% end %>
 </div>
