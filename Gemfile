@@ -37,7 +37,7 @@ gem 'whenever', :require => false
 gem 'devise'
 gem 'simple_form'
 
-gem 'forem', :path => '/Users/shomari/Desktop/forem'
+gem 'forem', :github => "radar/forem", :branch => "rails4"#, :path => '/Users/shomari/Desktop/forem'
 gem 'forem-bootstrap', :github => "radar/forem-bootstrap"
 gem 'will_paginate', '3.0.5'
 

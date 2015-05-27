@@ -19,14 +19,13 @@
 						<li><%= link_to 'Create account', new_player_registration_path  %></li>
 						<li><button class="btn navbar-btn btn-primary" id="login-btn">Login</button></li>
 					<% end %>
-					<% if current_player != nil %>
-						<li><%= link_to 'Logout', destroy_player_session_path, :method => "delete"  %></li>
-						<li><%= link_to "Edit profile", edit_players_console_path(current_player) %></li>
+					<% if current_player != nil %>	
 						<li><%= link_to 'Recents', player_recently_addeds_path(current_player) %></li>
+						<li><%= link_to "Edit profile", edit_players_console_path(current_player) %></li>
 						<% if @PS4 == nil %>
-							<li><%= link_to 'Start a Session', player_path(current_player) %></li>
+								<li><%= link_to 'Start a Session', player_path(current_player) %></li>
 						<% end %>
-
+						<li><%= link_to 'Logout', destroy_player_session_path, :method => "delete"  %></li>
 					<% end %>
 
 				</ul>
