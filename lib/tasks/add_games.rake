@@ -48,12 +48,14 @@ namespace :add_games do
 	  ConsolesGame.find_or_create_by(console: playstation, game: fi)
 	  ConsolesGame.find_or_create_by(console: playstation, game: fo)
 	  ConsolesGame.find_or_create_by(console: playstation, game: gta)
+	  ConsolesGame.find_or_create_by(console: playstation, game: mlb)
 	  ConsolesGame.find_or_create_by(console: playstation, game: mkx)
 	  ConsolesGame.find_or_create_by(console: playstation, game: mad)
 	  ConsolesGame.find_or_create_by(console: playstation, game: nba)
 	  ConsolesGame.find_or_create_by(console: playstation, game: pc)
 	  ConsolesGame.find_or_create_by(console: playstation, game: ti)
 	  ConsolesGame.find_or_create_by(console: playstation, game: wwe)
+
 
   end
 end
