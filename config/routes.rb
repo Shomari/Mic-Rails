@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # We ask that you don't use the :as option here, as Forem relies on it being the default of "forem"
   mount Forem::Engine, :at => '/forums'
 
-  devise_for :players,  controllers: { sessions: "players/sessions", registrations: "players/registrations" }
+  devise_for :players,  controllers: { sessions: "players/sessions", registrations: "players/registrations", passwords: "players/passwords" }
     
   resources :players do 
     resources :recently_addeds do 

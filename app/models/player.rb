@@ -12,6 +12,8 @@ class Player < ActiveRecord::Base
 
   has_many :recently_addeds
 
+  validates :handle, presence: true
+
   def correct_guess
   	self.points = self.points + 10
   	self.save!
