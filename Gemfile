@@ -30,6 +30,7 @@ gem 'simple_form'
 
 gem 'forem', :github => "radar/forem", :branch => "rails4"#, :path => '/Users/shomari/Desktop/forem'
 gem 'forem-bootstrap', :github => "radar/forem-bootstrap"
+gem 'forem-gfm_formatter'
 gem 'will_paginate', '3.0.5'
 
 #Bootstrap
