@@ -19,26 +19,40 @@
 					<td> Points: </td>
 					<td> <%= @player.points %> </td>
 				</tr>
-				<tr><td colspan="2"><%= button_to 'Recents', player_recently_addeds_path(current_player), class: "btn btn-lg btn-primary btn-block"%></td>
+				<tr><td colspan="2"><%= link_to 'Recents', player_recently_addeds_path(current_player), class: "btn btn-lg btn-primary btn-block"%></td>
 				</tr>
 			</table>
 		</div>
-		<div class="col-md-4 col-md-offset-1" id="session_box">
-			<h3>Choose a system and a game to start a session</h3>
-			<%= form_tag(check_question_path, :id => 'session_form') %>
-			<div class="row" id="select">
-				<div class="col-md-6">
-					Xbox One<%= radio_button_tag 'console', 'XB1' %>
+		<div class="col-md-4 col-md-offset-1">
+			<div class="row" id="session_box">
+				<h3>Choose a system and a game to start a session</h3>
+				<%= form_tag(check_question_path, :id => 'session_form') %>
+				<div class="row" id="select">
+					<div class="col-md-6">
+						Xbox One<%= radio_button_tag 'console', 'XB1' %>
+					</div>
+					<div class="col-md-6">
+						Playstation 4<%= radio_button_tag 'console', 'PS4' %>
+					</div>
 				</div>
-				<div class="col-md-6">
-					Playstation 4<%= radio_button_tag 'console', 'PS4' %>
+				<div class="row">
+					<%= select_tag 'psgames', options_from_collection_for_select(@PS4, "id", 'name'), :include_blank => true, :class => "form-control" %>
+					<%= select_tag 'xbgames', options_from_collection_for_select(@XB1, "id", 'name'), :include_blank => true, :class => "form-control" %>
+
+					<%= submit_tag 'submit', :class => "btn btn-lg btn-primary btn-block" %>
 				</div>
 			</div>
 			<div class="row">
-				<%= select_tag 'psgames', options_from_collection_for_select(@PS4, "id", 'name'), :include_blank => true, :class => "form-control" %>
-				<%= select_tag 'xbgames', options_from_collection_for_select(@XB1, "id", 'name'), :include_blank => true, :class => "form-control" %>
-
-				<%= submit_tag 'submit', :class => "btn btn-lg btn-primary btn-block" %>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- huh -->
+<ins class="adsbygoogle" id="profile-ad"
+     style="display:inline-block;width:336px;height:280px"
+     data-ad-client="ca-pub-9121927266889461"
+     data-ad-slot="5248620285"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 			</div>
 	</div>
+
 </div>
