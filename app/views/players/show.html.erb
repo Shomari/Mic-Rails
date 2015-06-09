@@ -1,6 +1,6 @@
 <div class="container-fluid" id="profile_page">
 	<div class="row">
-		<div class="col-md-6" id="profile_box">
+		<div class="col-xs-6" id="profile_box">
 			<table>
 				<p>Profile</p>
 				<tr>
@@ -23,15 +23,15 @@
 				</tr>
 			</table>
 		</div>
-		<div class="col-md-4 col-md-offset-1">
+		<div class="col-xs-4 col-xs-offset-1">
 			<div class="row" id="session_box">
 				<h3>Choose a system and a game to start a session</h3>
 				<%= form_tag(check_question_path, :id => 'session_form') %>
 				<div class="row" id="select">
-					<div class="col-md-6">
+					<div class="col-xs-6">
 						Xbox One<%= radio_button_tag 'console', 'XB1' %>
 					</div>
-					<div class="col-md-6">
+					<div class="col-xs-6">
 						Playstation 4<%= radio_button_tag 'console', 'PS4' %>
 					</div>
 				</div>
