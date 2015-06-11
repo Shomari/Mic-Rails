@@ -3,6 +3,7 @@
 <head>
   <title>Mic</title>
   <meta name="google-site-verification" content="s0z6f-iP6FDDd67oBrM_QGmPHQlWxNejsTjFLQ2kSD8" />
+  <%= render partial: "partials/google_analytics" %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -37,6 +38,6 @@
 	<%= yield %>
 
 </div>
-
+<%= render partial: "partials/google_analytics_pageview" %>
 </body>
 </html>
